@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head><title>DMS Kafka Demo测试rest接口使用说明</title><meta charset='utf-8'><link href='https://d31qtcb7c58z3n.cloudfront.net/res-min/themes/marxico.css' rel='stylesheet'><style></style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h1 id="dms-kafka测试rest接口使用说明">DMS Kafka Demo测试模型与相关rest接口使用说明</h1>
+
+<h2>一、DMS Kafka Demo测试模型说明</h2>
+
+<br>
+<div id='preview-contents2' class='note-content'>
+    <p>
+        <img type="image/png" src="./image/dms-demo.png">
+    </p>
+</div>
+
+<h2 id="一主要接口总览">二、主要接口总览</h2>
+
+<ul><li><strong>kafkaProduce</strong> – Kafka生产消息接口</li>
+<li><strong>kafkaConsumer</strong> – Kafka消费消息接口</li>
+</ul>
+
+
+
+<h2 id="三测试接口详细说明">三、测试接口详细说明</h2>
+
+
+
+<h3 id="1kafka生产消息接口">1、Kafka生产消息接口</h3>
+
+<ul><li>rest接口：<strong>v1/rest/kafkaProduce</strong></li>
+<li>请求类别：post</li>
+<li>请求参数：</li>
+</ul>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">   {
+</div><div class="hljs-line">    <span class="hljs-attr">"topic"</span>:<span class="hljs-string">"k-0e964f1ae251477ebbfe8cd85e758ee6-0df351cc-5f98-4b78-b71b-3d41c683f55f"</span>,  #topic id
+</div><div class="hljs-line">    <span class="hljs-attr">"msgCount"</span>:<span class="hljs-string">"10"</span>,    #单次调用发送消息的数量
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"Message body"</span>    #消息体
+</div><div class="hljs-line">    }
+</div></code></pre>
+
+<ul><li>返回结果：</li>
+</ul>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"errCode"</span>:<span class="hljs-string">"KAFKA.200"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"SUCCESS"</span>
+</div><div class="hljs-line">    }
+</div></code></pre>
+
+
+
+<h3 id="2kafka消费消息接口">2、Kafka消费消息接口</h3>
+
+<ul><li>rest接口：<strong>v1/rest/kafkaConsumer</strong></li>
+<li>请求类别：Post</li>
+<li>请求参数：</li>
+</ul>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"topic"</span>:<span class="hljs-string">"k-0e964f1ae251477ebbfe8cd85e758ee6-c31d64da-9d44-4abe-b808-a542b8027378"</span>,   #topic id
+</div><div class="hljs-line">        <span class="hljs-attr">"groupId"</span>:<span class="hljs-string">"g-68d15c6b-0523-4467-96c2-7df769d3b08b"</span>, #group id
+</div><div class="hljs-line">        <span class="hljs-attr">"timeout"</span>:<span class="hljs-string">"200"</span> #消费客户端超时时间
+</div><div class="hljs-line">    }
+</div></code></pre>
+
+<ul><li>返回结果：</li>
+</ul>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">     {
+</div><div class="hljs-line">        <span class="hljs-attr">"errCode"</span>:<span class="hljs-string">"KAFKA.200"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"pollCount"</span>:<span class="hljs-number">0</span>,  #本次调用消费的消息数量
+</div><div class="hljs-line">        <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"SUCCESS"</span>
+</div><div class="hljs-line">    }
+</div></code></pre></div></body></html>
