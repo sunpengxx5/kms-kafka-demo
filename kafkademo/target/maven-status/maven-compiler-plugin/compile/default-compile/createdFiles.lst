@@ -1,7 +1,0 @@
-com\huawei\utils\CommonUtils.class
-com\huawei\service\ConsumerService$1.class
-com\huawei\service\ConsumerService$ConsumerListener.class
-com\huawei\service\ConsumerService.class
-com\huawei\service\ProducerService.class
-com\huawei\controller\KafkaController.class
-com\huawei\configbean\BaseConfigBean.class
