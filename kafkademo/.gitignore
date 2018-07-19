@@ -2,4 +2,4 @@
 logs/
 target/classes
 target/generated-sources
-target/kafkademo
+target/kafkademo.war
