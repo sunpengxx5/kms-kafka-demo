@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="com.huawei.controller,com.huawei.service"/>
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="false">
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 加载db.properties文件中的内容，db.properties文件中的key命名要有一定的特殊规则 -->
+    <context:property-placeholder location="classpath:config/base-config.properties"/>
+
+    <!-- 静态文件处理  -->
+    <!-- location:表示/assets/目录下（即服务器根目录）的static包下的所有文件 -->
+    <!-- mapping:表示以/static开头的所有请求路径，如/static/a 或者/static/a/b -->
+    <mvc:resources mapping="/doc/**" location="/doc/" />
+    <mvc:resources mapping="/doc/image/**" location="/doc/image/" />
+
+    <bean id="baseConfig" class="com.huawei.configbean.BaseConfigBean">
+        <!--Common param-->
+        <property name="bootstrapServers" value="${bootstrap.servers}" />
+        <property name="sslTruststorePassword" value="${ssl.truststore.password}" />
+        <property name="securityProtocol" value="${security.protocol}" />
+        <property name="saslMechanism" value="${sasl.mechanism}" />
+        <!--Produce-->
+        <property name="acks" value="${acks}" />
+        <property name="retries" value="${retries}" />
+        <property name="batchSize" value="${batch.size}" />
+        <property name="bufferMemory" value="${buffer.memory}" />
+        <property name="keySerializer" value="${key.serializer}" />
+        <property name="valueSerializer" value="${value.serializer}" />
+        <property name="msgCount" value="${msg.count}" />
+        <property name="produceCount" value="${produce.count}" />
+        <property name="msgSize" value="${msg.size}" />
+        <!--Consume-->
+        <property name="keyDeserializer" value="${key.deserializer}" />
+        <property name="valueDeserializer" value="${value.deserializer}" />
+        <property name="autoOffsetReset" value="${auto.offset.reset}" />
+        <property name="enableAutoCommit" value="${enable.auto.commit}" />
+        <property name="connectionsMaxIdleMs" value="${connections.max.idle.ms}" />
+
+    </bean>
+
+</beans>
