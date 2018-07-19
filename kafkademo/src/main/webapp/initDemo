@@ -5,3 +5,5 @@ sed -i 's/\(access_key=\).*/\1\"'$accessKey'\"/' $confPath
 sed -i 's/\(secret_key=\).*/\1\"'$secretKey'\"/' $confPath
 sed -i 's/\(project_id=\).*/\1\"'$projectId'\";/' $confPath
 sed -i 's/\(bootstrap.servers=\).*/\1'$bootstrapServers'/' $propertiesPath
+
+catalina.sh run
