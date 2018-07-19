@@ -1,7 +1,9 @@
-confPath=/usr/local/tomcat/webapps/demo/WEB-INF/classes/dms_kafka_client_jaas.conf
-propertiesPath=/usr/local/tomcat/webapps/demo/WEB-INF/classes/config/base-config.properties
+confPath=/usr/local/tomcat/webapps/kafkademo/WEB-INF/classes/dms_kafka_client_jaas.conf
+propertiesPath=/usr/local/tomcat/webapps/kafkademo/WEB-INF/classes/config/base-config.properties
 
 sed -i 's/\(access_key=\).*/\1\"'$accessKey'\"/' $confPath
 sed -i 's/\(secret_key=\).*/\1\"'$secretKey'\"/' $confPath
 sed -i 's/\(project_id=\).*/\1\"'$projectId'\";/' $confPath
 sed -i 's/\(bootstrap.servers=\).*/\1'$bootstrapServers'/' $propertiesPath
+
+catalina.sh run
