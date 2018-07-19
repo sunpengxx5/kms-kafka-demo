@@ -6,6 +6,6 @@ ENV secretKey ZGaTtLs1KwcRCOlfmzFMBJ9lqbsZJoyU3Kcgr5gh
 ENV projectId 0e964f1ae251477ebbfe8cd85e758ee6
 RUN mkdir $WORKDIR/kafkademo
 WORKDIR /usr/local/tomcat/webapps/
-COPY kafkademo/target/kafkademo $WORKDIR
+COPY kafkademo/target/kafkademo $WORKDIR/kafkademo
 
 CMD ["/usr/local/tomcat/webapps/kafkademo/initDemo.sh", "run"]
